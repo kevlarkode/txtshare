@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> TXT Share | Download </title>
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/txt-share.css">
+
+
+    <style>
+        .content h2 {
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        #input-box {
+            border: 3px solid black;
+            border-radius: 20px;
+            padding: 1rem;
+            font-size: 2rem;
+            max-width: 20rem;
+        }
+
+        .btn-div {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .btn-div button {
+            border-radius: 20px;
+            font-size: 1rem;
+            font-family: 'Montserrat';
+            border: 3px solid black;
+            background-color: hsl(100, 100%, 40%);
+        }
+
+        #view {
+            background-color: hsl(211, 100%, 70%);
+            border: 3px solid black;
+            margin-right: 1.5rem;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <a href="/">
+                <h1>TXT Share</h1>
+            </a>
+        </header>
+
+        <main>
+            <div class="content">
+
+                <h2>Enter Clip ID: </h2>
+
+                <input type="text" id="input-box">
+                <div class="btn-div">
+                    <button id="view" class="btn">View</button>
+                    <button id="download" class="btn">Download</button>
+                </div>
+
+            </div>
+        </main>
+        <footer>
+            <p>© <span id="year"></span> SameClip | All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+
+        let inputBox = document.querySelector('#input-box');
+        let viewBtn = document.querySelector('#view');
+        let downloadBtn = document.querySelector('#download');
+
+        const clipId = new URLSearchParams(window.location.search).get('id');
+
+        inputBox.value = clipId;
+
+        viewBtn.addEventListener('click', () => {
+            if (inputBox.value !== '') {
+                let url = `http://res.cloudinary.com/kevlarkode/raw/upload/v1640516148/txt-share-app/${inputBox.value}.txt`;
+                window.open(url, '_blank').focus();
+            }
+            else {
+                alert('Enter code first!')
+            }
+        });
+        downloadBtn.addEventListener('click', () => {
+            if (inputBox.value !== '') {
+                let url = `http://res.cloudinary.com/kevlarkode/raw/upload/v1640516148/txt-share-app/${inputBox.value}.txt`;
+
+                downloadURI(url, `${inputBox.value}.txt`);
+            }
+            else {
+                alert('Enter code first!')
+            }
+        });
+
+        let downloadURI = (uri, name) => {
+            let link = document.createElement("a");
+            link.download = name;
+            link.href = uri;
+            link.target = '_blank';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            delete link;
+        }
+
+
+    </script>
+</body>
+
+</html>
