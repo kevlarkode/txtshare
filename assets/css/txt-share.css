@@ -178,7 +178,7 @@ header .clip-share-page-header {
 
 .link-display {
   padding: 0 0.75rem;
-  max-width: 60vw;
+  max-width: 44vw;
 }
 
 .display-link-div span {
@@ -218,7 +218,6 @@ header .clip-share-page-header {
   padding: 1rem;
   border-radius: 20px;
   border: 2px solid grey;
-  min-width: 50vw;
   max-width: 80vw;
 }
 .upload-details-div h3 {
@@ -324,7 +323,6 @@ header .clip-share-page-header {
   border-radius: 20px;
   border: 2px solid grey;
   margin: 1rem;
-  min-width: 50vw;
   max-width: 80vw;
 }
 

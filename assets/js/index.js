@@ -155,7 +155,7 @@ let uploadFile = async (base64EncodedFile) => {
         fileCode.innerText = clip_id;
 
         let linkBox = document.querySelector('.display-link-div');
-        linkBox.style.backgroundColor = ' hsl(249, 100%, 70%)';
+        linkBox.style.backgroundColor = `hsl(${Math.random() * 1000 % 357}, 100%, 30%)`;
 
         fileName = fileNameElement.value !== '' ? (fileNameElement.value).replace(/[\W_]+/g, '-') : 'result';
 
