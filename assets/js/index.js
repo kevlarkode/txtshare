@@ -185,6 +185,9 @@ const createPost = async (fileName, clip_id, count) => {
 
         fileName = `${fileName}.${extention}`;
 
+        imageUrl = imageUrl.replace('http', 'https');
+        downloadUrl = downloadUrl.replace('http', 'https');
+
         const doc = {
             fileName: fileName,
             clip_id: clip_id,
