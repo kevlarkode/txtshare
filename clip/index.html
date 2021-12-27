@@ -131,6 +131,20 @@
             }
         });
 
+        downloadBtn.addEventListener('click', () => {
+            console.log(fetchResult.count)
+            deleteFileOnCondition();
+        });
+
+        let deleteFileOnCondition = async () => {
+            let clip_id = inputBox.value;
+            if (fetchResult.count === 0) {
+                await fetch('/.netlify/functions/posts?' + new URLSearchParams({
+                    clip_id: clip_id
+                }));
+            }
+        };
+
         const getFile = async (clip_id) => {
             try {
                 const response = await fetch('/.netlify/functions/posts?' + new URLSearchParams({
