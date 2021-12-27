@@ -1,4 +1,5 @@
 const { table } = require('./utils/airtable');
+const { cloudinary } = require('./utils/cloudinary');
 const formattedReturn = require('./formattedReturn');
 
 module.exports = async (event) => {
@@ -29,10 +30,21 @@ module.exports = async (event) => {
         if (result === '')
             return formattedReturn(500, { msg: 'Something went wrong' });
 
-        if (result.count === 1) {
+        if (result.count === 0) {
             try {
                 const { id } = result;
                 await table.destroy(id);
+            } catch (err) {
+                console.error(err);
+                return formattedReturn(500, { msg: 'Something went wrong' });
+            }
+
+            const cloudinaryPublicId = `txt-share-app/${(result.fileName).replace('.txt', '')}_${result.clip_id}.txt`;
+
+            try {
+                await cloudinary.uploader.destroy(cloudinaryPublicId, {
+                    resource_type: 'raw'
+                });
             } catch (err) {
                 console.error(err);
                 return formattedReturn(500, { msg: 'Something went wrong' });
