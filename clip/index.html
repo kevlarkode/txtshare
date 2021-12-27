@@ -45,6 +45,28 @@
             background-color: hsl(211, 100%, 70%);
             border: 3px solid black;
             margin-right: 1.5rem;
+            font-size: 1rem;
+        }
+
+        #download {
+            border: 3px solid black;
+            margin-right: 1.5rem;
+            font-size: 1rem;
+        }
+
+        #fetch-info {
+            background-color: yellow;
+        }
+
+        #view,
+        #download {
+            display: none;
+        }
+
+        .btn-div p {
+            font-size: 2rem;
+            margin: 0 auto;
+            padding: 1rem;
         }
     </style>
 
@@ -67,8 +89,9 @@
 
                 <input type="text" id="input-box">
                 <div class="btn-div">
-                    <button id="view" class="btn">View</button>
-                    <button id="download" class="btn">Download</button>
+                    <a href="#" id="view" target="_blank" class="btn">View</a>
+                    <a href="#" id="download" class="btn">Download</a>
+                    <button id="fetch-info" class="btn">Get File</button>
                 </div>
 
             </div>
@@ -80,53 +103,54 @@
 
     <script>
 
+        let getBtn = document.querySelector('#fetch-info');
         let inputBox = document.querySelector('#input-box');
         let viewBtn = document.querySelector('#view');
         let downloadBtn = document.querySelector('#download');
+
+        let fetchResult = '';
+        let fetchResponse = '';
 
         const clipId = new URLSearchParams(window.location.search).get('id');
 
         inputBox.value = clipId;
 
-        viewBtn.addEventListener('click', () => {
-            if (inputBox.value !== '') {
-                let clip_id = inputBox.value;
-                // showFile(clip_id);
-                if (inputBox.value !== '') {
-                    // let url = `http://res.cloudinary.com/kevlarkode/raw/upload/v1640516148/txt-share-app/${clip_id}.txt`;
-                    // window.open(url, '_blank').focus();
-                    showFile(clip_id);
-                }
-                else {
-                    alert('Enter code first!')
-                }
-            }
-            else {
-                alert('Enter code first!')
-            }
-        });
-        downloadBtn.addEventListener('click', () => {
-            if (inputBox.value !== '') {
-                let clip_id = inputBox.value;
-                downloadFile(clip_id);
+        let loadingMessage = document.createElement('p');
+        loadingMessage.innerText = 'Loading...';
+        let btnDiv = document.querySelector('.btn-div');
+
+        getBtn.addEventListener('click', () => {
+            let clip_id = inputBox.value;
+            if (clip_id !== '') {
+                getBtn.style.display = 'none';
+                btnDiv.appendChild(loadingMessage);
+                getFile(clip_id);
             }
             else {
                 alert('Enter code first!')
             }
         });
 
-        const showFile = async (clip_id) => {
+        const getFile = async (clip_id) => {
             try {
                 const response = await fetch('/.netlify/functions/posts?' + new URLSearchParams({
                     clip_id: clip_id
                 }));
+
                 const res = await response.json();
+                fetchResponse = response;
+                fetchResult = res;
 
                 if (response.ok) {
-                    window.open(res.url, '_blank').focus();
+                    loadingMessage.remove();
+                    viewBtn.style.display = 'block';
+                    viewBtn.href = fetchResult.url;
+                    downloadBtn.href = fetchResult.download_url;
+                    downloadBtn.style.display = 'block';
                 }
                 else {
-                    alert('File does not exist!');
+                    alert('The file does not exist!');
+                    window.location.replace('/');
                 }
             } catch (err) {
                 console.error(err)
@@ -135,53 +159,6 @@
             }
         }
 
-        const downloadFile = async (clip_id) => {
-            try {
-                const response = await fetch('/.netlify/functions/posts?' + new URLSearchParams({
-                    clip_id: clip_id
-                }));
-
-                const res = await response.json();
-
-                if (response.ok) {
-                    downloadURI(res.download_url, res.fileName);
-                }
-                else {
-                    alert('File does not exist!');
-                    return;
-                }
-
-                // if (res.count == 1) {
-                //     await fetch('/.netlify/functions/posts', {
-                //         method: 'DELETE',
-                //         body: JSON.stringify({ id: res.id }),
-                //     });
-                // }
-                // else {
-                //     res.count--;
-
-                //     await fetch('/.netlify/functions/posts', {
-                //         method: 'PUT',
-                //         body: JSON.stringify(res),
-                //         headers: { 'Content-Type': 'application/json' }
-                //     })
-                // }
-
-            } catch (err) {
-                console.error(err)
-                alert('Something went wrong!');
-            }
-        }
-        let downloadURI = (uri, fileName) => {
-            let link = document.createElement("a");
-            link.download = fileName;
-            link.href = uri;
-            // link.target = '_blank';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            delete link;
-        }
     </script>
 
 </body>
