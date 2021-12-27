@@ -1,4 +1,4 @@
-const { cloudinary } = require('./utils/cloudinary');
+const { cloudinary } = require('./helpers/utils/cloudinary');
 const { customAlphabet } = require('nanoid');
 const alphabet = '0123456789abcdefghijklmnopqrstuvwxyz';
 const nanoid = customAlphabet(alphabet, 6);
@@ -7,14 +7,17 @@ exports.handler = async event => {
     try {
         const body = JSON.parse(event.body);
         const uuid = nanoid();
-        const file = body.data;
+        const fileName = body.fileName;
+        const file = body.file;
         const fileType = 'txt';
         const uploadResponse = await cloudinary.uploader.upload(file, {
             upload_preset: 'txt-share-app',
             resource_type: 'raw',
-            public_id: `${uuid}.${fileType}`,
+            public_id: `${fileName}_${uuid}.${fileType}`,
+            // use_filename: true,
+            // unique_filename: true
         });
-        console.log(uploadResponse)
+        // console.log(uploadResponse)
         return {
             statusCode: 200,
             body: JSON.stringify({ url: uploadResponse.url, clip_id: uuid })

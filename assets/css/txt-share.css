@@ -26,16 +26,20 @@ h3 {
   margin: 2rem 0;
 }
 
-header a{
+header h1 {
+  text-shadow: 0 0 3px #000, 0 0 5px #000;
+}
+
+header a {
   width: fit-content;
   margin: 0 auto;
 }
 
 header span {
-  color: white;
-  font-weight: 3rem;
-  font-family: sans-serif;
-  font-weight: bold;
+  color: hsl(60, 100%, 50%);
+  font-family: Calibri;
+  font-size: 1.25rem;
+  text-shadow: 0 0 1px #000, 0 0 1px #000;
 }
 
 header .clip-share-page-header {
@@ -72,7 +76,24 @@ header .clip-share-page-header {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   margin: 0 auto;
+}
+
+#file-name {
+  background-color: hsl(100, 100%, 80%);
+  border-radius: 10px;
+  border: 3px dashed black;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  font-family: "Fira Code", "Montserrat 500";
+  max-width: 90vw;
+  width: 40rem;
 }
 
 .text-input-div textarea {
@@ -117,6 +138,7 @@ header .clip-share-page-header {
   color: white;
   background-color: hsl(100, 100%, 30%);
   font-family: "Montserrat";
+  max-width: 70vw;
 }
 
 .upload-btn:active {
@@ -191,11 +213,23 @@ header .clip-share-page-header {
   margin-right: 1rem;
 }
 
+.upload-details-div {
+  background-color: rgb(220, 245, 221);
+  padding: 1rem;
+  border-radius: 20px;
+  border: 2px solid grey;
+  min-width: 50vw;
+  max-width: 80vw;
+}
+.upload-details-div h3 {
+  text-align: center;
+}
 .change-upload-count-div {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 1.5rem auto;
+  margin-top: 0;
 }
 
 .change-count-btn-div {
@@ -290,6 +324,8 @@ header .clip-share-page-header {
   border-radius: 20px;
   border: 2px solid grey;
   margin: 1rem;
+  min-width: 50vw;
+  max-width: 80vw;
 }
 
 .after-upload-div h3 {

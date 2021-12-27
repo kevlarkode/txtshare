@@ -5,7 +5,7 @@ exports.handler = async event => {
         .expression('folder:txt-share-app')
         .max_results(30)
         .execute();
-    // const publicIds = resources.map((file) => file.public_id);
+
     return {
         statusCode: 200,
         body: JSON.stringify(resources)

@@ -7,6 +7,9 @@ downloadBtn.addEventListener('click', () => {
 
 let saveFile = () => {
 
+    let fileNameElement = document.querySelector('#file-name');
+    let fileName = fileNameElement.value !== '' ? (fileNameElement.value).replace(/[\W_]+/g, '-') : 'result';
+
     const inputText = document.querySelector('#input');
     let data = inputText.value;
 
@@ -16,10 +19,12 @@ let saveFile = () => {
     }
 
     const textToBLOB = new Blob([data], { type: 'text/plain' });
-    const sFileName = 'result.txt';
+    const extention = 'txt';
+
+    fileName = `${fileName}.${extention}`;
 
     let newLink = document.createElement('a');
-    newLink.download = sFileName;
+    newLink.download = fileName;
 
     if (window.webkitURL != null) {
         newLink.href = window.webkitURL.createObjectURL(textToBLOB);
@@ -60,26 +65,26 @@ const copyToClipboard = () => {
 
 /******  change counter *****/
 
-// let max = (a, b) => {
-//     return a > b ? a : b
-// }
-// let min = (a, b) => {
-//     return a < b ? a : b
-// }
+let max = (a, b) => {
+    return a > b ? a : b
+}
+let min = (a, b) => {
+    return a < b ? a : b
+}
 
-// let count = 1;
-// let uploadCount = document.querySelector('.upload-count');
-// let uploadCountDown = document.querySelector('.upload-count-down');
-// let uploadCountUp = document.querySelector('.upload-count-up');
+let count = 1;
+let uploadCount = document.querySelector('.upload-count');
+let uploadCountDown = document.querySelector('.upload-count-down');
+let uploadCountUp = document.querySelector('.upload-count-up');
 
-// uploadCountDown.addEventListener('click', () => {
-//     count = max(1, count - 1);
-//     uploadCount.innerText = count;
-// });
-// uploadCountUp.addEventListener('click', () => {
-//     count = min(100, count + 1);
-//     uploadCount.innerText = count;
-// });
+uploadCountDown.addEventListener('click', () => {
+    count = max(1, count - 1);
+    uploadCount.innerText = count;
+});
+uploadCountUp.addEventListener('click', () => {
+    count = min(100, count + 1);
+    uploadCount.innerText = count;
+});
 
 /******  File create, process and upload *****/
 
@@ -87,6 +92,7 @@ const inputFile = document.querySelector('#input');
 const submitBtn = document.querySelector('#submit');
 const fileLink = document.querySelector('#file-link');
 const fileCode = document.querySelector('#file-code');
+let fileNameElement = document.querySelector('#file-name');
 
 submitBtn.addEventListener('click', () => {
     createFile();
@@ -102,7 +108,7 @@ let createFile = () => {
         return;
     }
 
-    let fileName = 'result';
+    fileName = fileNameElement.value !== '' ? (fileNameElement.value).replace(/[\W_]+/g, '-') : 'result';
 
     let txtFile = new File([inputText], `${fileName}.txt`, { type: 'text/plain;charset=utf-8' });
 
@@ -134,21 +140,66 @@ let handleSubmitFile = (base64EncodedFile) => {
 
 let uploadFile = async (base64EncodedFile) => {
     try {
+        fileName = fileNameElement.value !== '' ? (fileNameElement.value).replace(/[\W_]+/g, '-') : 'result';
         const response = await fetch('/.netlify/functions/uploadFile', {
             method: 'POST',
-            body: JSON.stringify({ data: base64EncodedFile }),
+            body: JSON.stringify({ fileName: fileName, file: base64EncodedFile }),
             headers: { 'Content-Type': 'application/json' },
         });
-        let res = await response.json();
 
-        fileLink.innerText = window.location + `clip/index.html?id=${res.clip_id}`;
-        fileLink.href = window.location + `clip/index.html?id=${res.clip_id}`;
-        fileCode.innerText = res.clip_id;
+        let res = await response.json();
+        let clip_id = res.clip_id;
+
+        fileLink.innerText = window.location + `clip/index.html?id=${clip_id}`;
+        fileLink.href = window.location + `clip/index.html?id=${clip_id}`;
+        fileCode.innerText = clip_id;
 
         let linkBox = document.querySelector('.display-link-div');
         linkBox.style.backgroundColor = ' hsl(249, 100%, 70%)';
+
+        fileName = fileNameElement.value !== '' ? (fileNameElement.value).replace(/[\W_]+/g, '-') : 'result';
+
+        let count = document.querySelector('#upload-count').innerText;
+
+        if (Number(count) === NaN || (Number(count) < 1 || Number(count) > 100)) {
+            count = 1;
+        }
+        else {
+            count = Number(count)
+        }
+
+        createPost(fileName, clip_id, count);
+
     } catch (err) {
         console.error(err);
+        alert('Something went wrong!');
+    }
+}
+
+const createPost = async (fileName, clip_id, count) => {
+    try {
+
+        let imageUrl = `http://res.cloudinary.com/kevlarkode/raw/upload/v1640516148/txt-share-app/${fileName}_${clip_id}.txt`;
+        let downloadUrl = `http://res.cloudinary.com/kevlarkode/raw/upload/fl_attachment/v1640516148/txt-share-app/${fileName}_${clip_id}.txt`;
+        const extention = 'txt';
+
+        fileName = `${fileName}.${extention}`;
+
+        const doc = {
+            fileName: fileName,
+            clip_id: clip_id,
+            url: imageUrl,
+            download_url: downloadUrl,
+            count: count,
+        }
+
+        await fetch('/.netlify/functions/posts', {
+            method: 'POST',
+            body: JSON.stringify(doc),
+            headers: { 'Content-Type': 'application/json' }
+        })
+    } catch (err) {
+        console.error(err)
         alert('Something went wrong!');
     }
 }

@@ -18,35 +18,37 @@
             <a href="/">
                 <h1>TXT Share</h1>
             </a>
+            <span>Download or share text with people</span>
         </header>
 
         <main>
             <h2>Enter text to share: </h2>
             <div class="content">
                 <div class="text-input-div">
-                    <!-- <input type="text" id="name" placeholder="Enter Title"> -->
+                    <input type="text" id="file-name" placeholder="Enter title">
                     <textarea name="input" id="input" cols="30" rows="10" placeholder="start typing here..."></textarea>
                 </div>
 
                 <div class="upload-btn-div">
-
-                    <!-- <h3>Enter no. of copies to share: </h3>
-
-                    <div class="change-upload-count-div">
-                        <div class="count-display">
-                            <span class="upload-count">1</span>
-                        </div>
-                        <div class="change-count-btn-div">
-                            <span class="upload-count-down">&minus;</span>
-                            <span class="upload-count-up">&plus;</span>
-                        </div>
-                    </div> -->
                     <button class="download-btn btn" id="download">
                         Download &#8595;
                     </button>
-                    <button class="upload-btn btn" id="submit">
-                        Upload &#8593;
-                    </button>
+                    <div class="upload-details-div">
+                        <h3>Enter no. of copies to share: </h3>
+                        <div class="change-upload-count-div">
+                            <div class="count-display">
+                                <span class="upload-count"
+                                id="upload-count">1</span>
+                            </div>
+                            <div class="change-count-btn-div">
+                                <span class="upload-count-down">&minus;</span>
+                                <span class="upload-count-up">&plus;</span>
+                            </div>
+                        </div>
+                        <button class="upload-btn btn" id="submit">
+                            Upload &#8593;
+                        </button>
+                    </div>
                 </div>
                 <div class="after-upload-div">
                     <h3> File sharing link and code will appear here:
