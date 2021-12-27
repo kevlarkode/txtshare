@@ -29,6 +29,26 @@ module.exports = async (event) => {
         if (result === '')
             return formattedReturn(500, { msg: 'Something went wrong' });
 
+        if (result.count === 1) {
+            try {
+                const { id } = result;
+                await table.destroy(id);
+            } catch (err) {
+                console.error(err);
+                return formattedReturn(500, { msg: 'Something went wrong' });
+            }
+        }
+        else {
+            try {
+                result.count--;
+                const { id, timeStamp, ...fields } = result;
+                await table.update([{ id, fields }]);
+            } catch (err) {
+                console.error(err);
+                return formattedReturn(500, { msg: 'Something went wrong' });
+            }
+        }
+
         return formattedReturn(200, result);
     }
     catch (err) {

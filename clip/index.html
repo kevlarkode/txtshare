@@ -150,21 +150,21 @@
                     return;
                 }
 
-                if (res.count == 1) {
-                    await fetch('/.netlify/functions/posts', {
-                        method: 'DELETE',
-                        body: JSON.stringify({ id: res.id }),
-                    });
-                }
-                else {
-                    res.count--;
+                // if (res.count == 1) {
+                //     await fetch('/.netlify/functions/posts', {
+                //         method: 'DELETE',
+                //         body: JSON.stringify({ id: res.id }),
+                //     });
+                // }
+                // else {
+                //     res.count--;
 
-                    await fetch('/.netlify/functions/posts', {
-                        method: 'PUT',
-                        body: JSON.stringify(res),
-                        headers: { 'Content-Type': 'application/json' }
-                    })
-                }
+                //     await fetch('/.netlify/functions/posts', {
+                //         method: 'PUT',
+                //         body: JSON.stringify(res),
+                //         headers: { 'Content-Type': 'application/json' }
+                //     })
+                // }
 
             } catch (err) {
                 console.error(err)
