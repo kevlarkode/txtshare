@@ -1,4 +1,4 @@
-/*****  download button*****/
+/*****  download button *****/
 const downloadBtn = document.querySelector('#download');
 
 downloadBtn.addEventListener('click', () => {
@@ -14,7 +14,12 @@ let saveFile = () => {
     let data = inputText.value;
 
     if (data === '') {
-        alert('Enter text before download!');
+        Swal.fire({
+            icon: 'warning',
+            confirmButtonColor: '#ffa333',
+            confirmButtonText: 'OK',
+            title: 'Enter text before \ndownload!'
+        });
         return;
     }
 
@@ -104,7 +109,12 @@ let createFile = () => {
     let inputText = userInput.value;
 
     if (inputText === '') {
-        alert('Enter text before upload!');
+        Swal.fire({
+            icon: 'warning',
+            confirmButtonColor: '#ffa333',
+            confirmButtonText: 'OK',
+            title: 'Enter text before \nupload!'
+        });
         return;
     }
 
@@ -131,15 +141,30 @@ let processFile = (file) => {
 
 let handleSubmitFile = (base64EncodedFile) => {
     if (!base64EncodedFile) {
-        alert('No input found!');
+        Swal.fire({
+            icon: 'warning',
+            confirmButtonColor: '#ffa333',
+            confirmButtonText: 'OK',
+            title: 'No input found!'
+        });
         return;
     }
 
     uploadFile(base64EncodedFile);
 };
 
+let loadingMessage = document.createElement('p');
+loadingMessage.innerText = 'Loading...';
+loadingMessage.id = 'loading'
+let btnDiv = document.querySelector('.btn-div');
+
+
 let uploadFile = async (base64EncodedFile) => {
     try {
+
+        submitBtn.style.display = 'none';
+        btnDiv.appendChild(loadingMessage);
+
         fileName = fileNameElement.value !== '' ? (fileNameElement.value).replace(/[\W_]+/g, '-') : 'result';
         const response = await fetch('/.netlify/functions/uploadFile', {
             method: 'POST',
@@ -150,8 +175,12 @@ let uploadFile = async (base64EncodedFile) => {
         let res = await response.json();
         let clip_id = res.clip_id;
 
-        fileLink.innerText = window.location + `clip/index.html?id=${clip_id}`;
-        fileLink.href = window.location + `clip/index.html?id=${clip_id}`;
+        let recievePageUrl = window.location + `recieve/index.html?id=${clip_id}`;
+
+        recievePageUrl = String(recievePageUrl).replace('send/', '');
+
+        fileLink.innerText = recievePageUrl;
+        fileLink.href = recievePageUrl;
         fileCode.innerText = clip_id;
 
         let linkBox = document.querySelector('.display-link-div');
@@ -170,9 +199,25 @@ let uploadFile = async (base64EncodedFile) => {
 
         createPost(fileName, clip_id, count);
 
+        Swal.fire({
+            icon: 'success',
+            title: 'File Uploaded Successful!',
+            text: 'Your file link and code is ready!',
+            confirmButtonAriaLabel: 'Thumbs up, OK!',
+            confirmButtonColor: '#3bb300'
+        })
+
+        submitBtn.style.display = 'flex';
+        loadingMessage.remove();
+
     } catch (err) {
         console.error(err);
-        alert('Something went wrong!');
+        Swal.fire({
+            icon: 'warning',
+            confirmButtonColor: '#ffa333',
+            confirmButtonText: 'OK',
+            title: 'Something went wrong!'
+        });
     }
 }
 
@@ -203,6 +248,11 @@ const createPost = async (fileName, clip_id, count) => {
         })
     } catch (err) {
         console.error(err)
-        alert('Something went wrong!');
+        Swal.fire({
+            icon: 'warning',
+            confirmButtonColor: '#ffa333',
+            confirmButtonText: 'OK',
+            title: 'Something went wrong!'
+        });
     }
 }

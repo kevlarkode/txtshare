@@ -5,9 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SameCTXT Sharelip | Home</title>
+    <title> TXT Share | Recieve </title>
 
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/recieve/style.css">
+
 </head>
 
 <body>
@@ -21,19 +23,19 @@
         </header>
 
         <main>
-            <h2>Choose sharing method: </h2>
-            <br>
             <div class="content">
-                <div class="link-div send-share-page-link-div">
-                    <a href="/send/" class="send-share-page-link btn">Send File</a>
+
+                <h2>Enter Clip ID: </h2>
+
+                <input type="text" id="input-box">
+                <div class="btn-div">
+                    <a href="#" id="view" target="_blank" class="btn">View</a>
+                    <a href="#" id="download" target="_blank" class="btn">Download</a>
+                    <button id="fetch-info" class="btn">Get File</button>
                 </div>
 
-                <div class="link-div recieve-share-page-link-div">
-                    <a href="/recieve/" class="recieve-share-page-link btn">Recieve File</a>
-                </div>
             </div>
         </main>
-
         <footer>
             <p>© <span id="year"></span> TXT Share | All rights reserved.</p>
         </footer>
@@ -42,8 +44,8 @@
     <script>
         document.querySelector('#year').innerHTML = new Date().getFullYear();
     </script>
-
-    <script src="/assets/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
+    <script src="/recieve/script.js"></script>
 
 </body>
 

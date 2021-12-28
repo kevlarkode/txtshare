@@ -17,32 +17,12 @@
     U+FEFF, U+FFFD;
 }
 
-h1 {
-  color: white;
-}
-
 h2,
 h3 {
   margin: 2rem 0;
 }
 
-header h1 {
-  text-shadow: 0 0 3px #000, 0 0 5px #000;
-}
-
-header a {
-  width: fit-content;
-  margin: 0 auto;
-}
-
-header span {
-  color: hsl(60, 100%, 50%);
-  font-family: Calibri;
-  font-size: 1.25rem;
-  text-shadow: 0 0 1px #000, 0 0 1px #000;
-}
-
-header .clip-share-page-header {
+header .recieve-share-page-header {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -331,4 +311,61 @@ header .clip-share-page-header {
   text-align: center;
   margin-bottom: 1.5rem;
   font-size: 1.5rem;
+}
+
+.content h2 {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+#input-box {
+  border: 3px solid black;
+  border-radius: 20px;
+  padding: 1rem;
+  font-size: 2rem;
+  max-width: 20rem;
+}
+
+.btn-div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.btn-div button {
+  border-radius: 20px;
+  font-size: 1rem;
+  font-family: "Montserrat";
+  border: 3px solid black;
+  background-color: hsl(100, 100%, 40%);
+}
+
+#view {
+  background-color: hsl(211, 100%, 70%);
+  border: 3px solid black;
+  margin-right: 1.5rem;
+  font-size: 1rem;
+}
+
+#download {
+  border: 3px solid black;
+  margin-right: 1.5rem;
+  font-size: 1rem;
+}
+
+#fetch-info {
+  background-color: yellow;
+}
+
+#view,
+#download {
+  display: none;
+}
+
+.btn-div p {
+  font-size: 2rem;
+  margin: 0 auto;
+  padding: 1rem;
 }
