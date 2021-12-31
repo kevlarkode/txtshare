@@ -93,6 +93,18 @@ uploadCountUp.addEventListener('click', () => {
 
 /******  File create, process and upload *****/
 
+let myConfetti = (x_value, y_value) => {
+    confetti({
+        particleCount: 250,
+        startVelocity: 30,
+        spread: 360,
+        origin: {
+            x: x_value,
+            y: y_value
+        }
+    });
+}
+
 const inputFile = document.querySelector('#input');
 const submitBtn = document.querySelector('#submit');
 const fileLink = document.querySelector('#file-link');
@@ -199,13 +211,20 @@ let uploadFile = async (base64EncodedFile) => {
 
         createPost(fileName, clip_id, count);
 
-        Swal.fire({
-            icon: 'success',
-            title: 'File Uploaded Successful!',
-            text: 'Your file link and code is ready!',
-            confirmButtonAriaLabel: 'Thumbs up, OK!',
-            confirmButtonColor: '#3bb300'
-        })
+         setTimeout(() => {
+            myConfetti(0.5, 0.3)
+        }, 100);
+
+        setTimeout(() => {
+            Swal.fire({
+                icon: 'success',
+                title: 'File Uploaded Successful!',
+                text: 'Your file link and code is ready!',
+                confirmButtonAriaLabel: 'Thumbs up, OK!',
+                confirmButtonColor: '#3bb300'
+            })
+        }, 600);
+        
 
         submitBtn.style.display = 'flex';
         loadingMessage.remove();

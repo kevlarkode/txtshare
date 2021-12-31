@@ -33,7 +33,7 @@ getBtn.addEventListener('click', () => {
 });
 
 downloadBtn.addEventListener('click', () => {
-    console.log(fetchResult.count)
+    // console.log(fetchResult.count)
     deleteFileOnCondition();
 });
 
