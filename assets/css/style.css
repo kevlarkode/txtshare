@@ -56,6 +56,20 @@ h1 {
   font-size: 3rem;
 }
 
+h2 {
+  text-align: center;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header .main {
+  margin-left: 1rem;
+}
+
 header h1 {
   color: white;
   text-shadow: 0 0 3px #000, 0 0 5px #000;
@@ -68,8 +82,10 @@ header a {
 
 header span {
   color: hsl(60, 100%, 50%);
+  color: black;
   font-family: Calibri;
   font-size: 1.25rem;
+  letter-spacing: 1.125px;
   text-shadow: 0 0 1px #000, 0 0 1px #000;
 }
 
@@ -124,7 +140,8 @@ main {
   box-shadow: 1px 1px 10px 1px black;
 }
 
-#send, #get {
+#send,
+#get {
   padding: 1rem 1.5rem;
 }
 
@@ -135,4 +152,36 @@ footer {
   padding: 2rem 1rem;
   font-size: 1.25rem;
   border-radius: 0 0 10px 10px;
+}
+
+#theme-options {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  max-width: fit-content;
+  margin: 0 auto;
+  padding: 0.5rem 1rem;
+  background-color: grey;
+  margin-bottom: 1.5rem;
+  border: 3px solid black;
+  border-radius: 50px;
+}
+.theme-dot {
+  cursor: pointer;
+  display: inline-flex;
+  margin-top: 0.25rem;
+  width: 1rem;
+  height: 1rem;
+  padding: 1rem;
+  border-radius: 50%;
+  margin: 0.5rem;
+}
+#light-mode {
+  background-color: #eee;
+  border: 1px solid black;
+}
+#dark-mode {
+  background-color: #232323;
+  border: 1px solid black;
+  margin-left: 0;
 }

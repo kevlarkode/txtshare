@@ -72,8 +72,10 @@ header a {
 
 header span {
   color: hsl(60, 100%, 50%);
+  color: black;
   font-family: Calibri;
   font-size: 1.25rem;
+  letter-spacing: 1.125px;
   text-shadow: 0 0 1px #000, 0 0 1px #000;
 }
 
@@ -147,6 +149,14 @@ h2 {
   margin: 2rem 0;
 }
 
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  margin: 1rem;
+}
+
 .content h2 {
   margin: 0 auto;
   text-align: center;
@@ -159,7 +169,7 @@ h2 {
   border-radius: 20px;
   padding: 1rem;
   font-size: 2rem;
-  max-width: 20rem;
+  max-width: 90vw;
 }
 
 .btn-div {

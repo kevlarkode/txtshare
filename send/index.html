@@ -9,6 +9,8 @@
 
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/send/style.css">
+    <!-- css for switching theme -->
+    <link id="theme-style" rel="stylesheet" type="text/css" href="">
 
 </head>
 
@@ -16,10 +18,12 @@
 
     <div class="container">
         <header>
-            <a href="/">
-                <h1>TXT Share</h1>
-            </a>
-            <span>Download or share text with people</span>
+            <div class="main">
+                <a href="/">
+                    <h1>TXT Share</h1>
+                </a>
+                <span>Download or share text with people</span>
+            </div>
         </header>
 
         <main>
@@ -84,6 +88,10 @@
         </main>
 
         <footer>
+            <div id="theme-options">
+                <div id="light-mode" class="theme-dot"></div>
+                <div id="dark-mode" class="theme-dot"></div>
+            </div>
             <p>© <span id="year"></span> TXT Share | All rights reserved.</p>
         </footer>
     </div>
@@ -95,6 +103,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
     <script src="/send/script.js"></script>
+    <script src="/assets//js/script.js"></script>
 
 </body>
 

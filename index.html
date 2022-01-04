@@ -5,19 +5,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SameCTXT Sharelip | Home</title>
+    <title>TXT Sharelip | Home</title>
 
     <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- css for switching theme -->
+    <link id="theme-style" rel="stylesheet" type="text/css" href="">
 </head>
 
 <body>
 
     <div class="container">
         <header>
-            <a href="/">
-                <h1>TXT Share</h1>
-            </a>
-            <span>Download or share text with people</span>
+            <div class="main">
+                <a href="/">
+                    <h1>TXT Share</h1>
+                </a>
+                <span>Download or share text with people</span>
+            </div>
         </header>
 
         <main>
@@ -35,6 +39,10 @@
         </main>
 
         <footer>
+            <div id="theme-options">
+                <div id="light-mode" class="theme-dot"></div>
+                <div id="dark-mode" class="theme-dot"></div>
+            </div>
             <p>© <span id="year"></span> TXT Share | All rights reserved.</p>
         </footer>
     </div>

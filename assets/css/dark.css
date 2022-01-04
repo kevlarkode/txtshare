@@ -1,0 +1,33 @@
+.container {
+  background-color: #222;
+}
+
+body {
+  background-color: #666;
+}
+
+.btn {
+  border: 3px solid #333 !important;
+  box-shadow: 1px 1px 10px 1px black;
+}
+
+main {
+  color: #eee;
+}
+
+input,
+textarea {
+  background-color: #121212 !important;
+  border: none !important;
+  color: hsl(100, 100%, 80%);
+}
+.after-upload-div,
+.upload-details-div {
+  background-color: hsl(100, 40%, 57%);
+  color: black;
+}
+
+.file-code-div {
+  background-color: #121212 !important;
+  color: hsl(100, 100%, 80%);
+}

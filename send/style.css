@@ -72,8 +72,10 @@ header a {
 
 header span {
   color: hsl(60, 100%, 50%);
+  color: black;
   font-family: Calibri;
   font-size: 1.25rem;
+  letter-spacing: 1.125px;
   text-shadow: 0 0 1px #000, 0 0 1px #000;
 }
 
@@ -158,8 +160,10 @@ header a {
 
 header span {
   color: hsl(60, 100%, 50%);
+  color: black;
   font-family: Calibri;
   font-size: 1.25rem;
+  letter-spacing: 1.125px;
   text-shadow: 0 0 1px #000, 0 0 1px #000;
 }
 

@@ -1,3 +1,20 @@
+/*****  prompt before leaving when input is not empty *****/
+const beforeUnloadListener = (event) => {
+    event.preventDefault();
+    return event.returnValue = "Are you sure you want to exit?";
+};
+
+const inputText = document.querySelector('#input');
+
+inputText.addEventListener("input", (event) => {
+    if (event.target.value !== "") {
+        addEventListener("beforeunload", beforeUnloadListener, { capture: true });
+    } else {
+        removeEventListener("beforeunload", beforeUnloadListener, { capture: true });
+    }
+});
+
+
 /*****  download button *****/
 const downloadBtn = document.querySelector('#download');
 
