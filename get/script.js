@@ -27,7 +27,7 @@ getBtn.addEventListener('click', () => {
             icon: 'warning',
             confirmButtonColor: '#ffa333',
             confirmButtonText: 'OK',
-            title: 'Enter Clip ID first!'
+            title: 'Enter CODE first!'
         })
     }
 });

@@ -50,6 +50,10 @@ a {
   display: block;
 }
 
+b {
+  font-family: "Montserrat 500";
+}
+
 h1 {
   font-family: "Montserrat 500";
   letter-spacing: 7px;
