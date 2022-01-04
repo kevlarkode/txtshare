@@ -187,12 +187,12 @@ let uploadFile = async (base64EncodedFile) => {
         let res = await response.json();
         let clip_id = res.clip_id;
 
-        let recievePageUrl = window.location + `recieve/index.html?id=${clip_id}`;
+        let getPageUrl = window.location + `get/index.html?id=${clip_id}`;
 
-        recievePageUrl = String(recievePageUrl).replace('send/', '');
+        getPageUrl = String(getPageUrl).replace('send/', '');
 
-        fileLink.innerText = recievePageUrl;
-        fileLink.href = recievePageUrl;
+        fileLink.innerText = getPageUrl;
+        fileLink.href = getPageUrl;
         fileCode.innerText = clip_id;
 
         let linkBox = document.querySelector('.display-link-div');

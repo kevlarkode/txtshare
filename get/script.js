@@ -70,7 +70,7 @@ const getFile = async (clip_id) => {
                 confirmButtonText: 'OK',
                 title: 'The file does not exist!'
             }).then(() => {
-                window.location.replace('/recieve/');
+                window.location.replace('/get/');
             })
 
         }

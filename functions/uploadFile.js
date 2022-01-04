@@ -14,10 +14,7 @@ exports.handler = async event => {
             upload_preset: 'txt-share-app',
             resource_type: 'raw',
             public_id: `${fileName}_${uuid}.${fileType}`,
-            // use_filename: true,
-            // unique_filename: true
         });
-        // console.log(uploadResponse)
         return {
             statusCode: 200,
             body: JSON.stringify({ url: uploadResponse.url, clip_id: uuid })

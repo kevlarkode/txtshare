@@ -111,23 +111,6 @@ main {
   padding: 2rem 0;
 }
 
-#send {
-  background-color: hsl(46, 100%, 65%);
-  border: 2px solid black;
-  box-shadow: 1px 1px 10px 1px black;
-  margin-bottom: 2rem;
-}
-#get {
-  background-color: var(--theme-color);
-  background-color: hsl(33, 100%, 65%);
-  border: 2px solid black;
-  box-shadow: 1px 1px 10px 1px black;
-}
-
-#send, #get {
-  padding: 1rem 1.5rem;
-}
-
 footer {
   text-align: center;
   font-family: "Montserrat 500";
@@ -135,4 +118,84 @@ footer {
   padding: 2rem 1rem;
   font-size: 1.25rem;
   border-radius: 0 0 10px 10px;
+}
+
+:root {
+  --theme-color: hsl(100, 100%, 35%);
+}
+
+/* fonts */
+
+/* Fira Code */
+@font-face {
+  font-family: "Fira Code";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/firacode/v14/uU9eCBsR6Z2vfE9aq3bL0fxyUs4tcw4W_D1sJVD7Ng.woff2)
+    format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+h2 {
+  margin: 2rem 0;
+}
+
+.content h2 {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+#input-box {
+  border: 3px solid black;
+  border-radius: 20px;
+  padding: 1rem;
+  font-size: 2rem;
+  max-width: 20rem;
+}
+
+.btn-div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.btn-div button {
+  border-radius: 20px;
+  font-size: 1rem;
+  font-family: "Montserrat";
+  border: 3px solid black;
+  background-color: hsl(100, 100%, 40%);
+}
+
+#view {
+  background-color: hsl(211, 100%, 70%);
+  border: 3px solid black;
+  margin-right: 1.5rem;
+  font-size: 1rem;
+}
+
+#download {
+  border: 3px solid black;
+  margin-right: 1.5rem;
+  font-size: 1rem;
+}
+
+#fetch-info {
+  background-color: yellow;
+}
+
+#view,
+#download {
+  display: none;
+}
+
+.btn-div p {
+  font-size: 2rem;
+  margin: 0 auto;
+  padding: 1rem;
 }
