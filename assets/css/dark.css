@@ -18,7 +18,7 @@ main {
 input,
 textarea {
   background-color: #121212 !important;
-  border: none !important;
+  border: 3px dashed silver !important;
   color: hsl(100, 100%, 80%);
 }
 .after-upload-div,
