@@ -70,15 +70,6 @@ header a {
   margin: 0 auto;
 }
 
-header span {
-  color: hsl(60, 100%, 50%);
-  color: black;
-  font-family: Calibri;
-  font-size: 1.25rem;
-  letter-spacing: 1.125px;
-  text-shadow: 0 0 1px #000, 0 0 1px #000;
-}
-
 .btn {
   display: flex;
   justify-content: center;
@@ -161,9 +152,8 @@ header a {
 header span {
   color: hsl(60, 100%, 50%);
   color: black;
-  font-family: Calibri;
-  font-size: 1.25rem;
-  letter-spacing: 1.125px;
+  font-family: "Montserrat";
+  /* font-size: 1.25rem; */
   text-shadow: 0 0 1px #000, 0 0 1px #000;
 }
 
@@ -253,7 +243,7 @@ header span {
 }
 
 .display-link-div {
-  background-color: hsl(174, 72%, 30%) ;
+  background-color: hsl(174, 72%, 30%);
   border: 3px solid black;
   border-radius: 20px;
   font-family: sans-serif;
@@ -411,16 +401,7 @@ header span {
 }
 
 .after-upload-div {
-  background-color: rgb(220, 245, 221);
-  padding: 1rem;
-  border-radius: 20px;
-  border: 2px solid grey;
-  margin: 1rem;
-  max-width: 80vw;
-}
-
-.after-upload-div {
-  background-color: rgb(220, 245, 221);
+  background-color: hsl(122, 56%, 91%);
   padding: 1rem;
   border-radius: 20px;
   border: 2px solid grey;

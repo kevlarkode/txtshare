@@ -24,10 +24,16 @@ textarea {
 .after-upload-div,
 .upload-details-div {
   background-color: hsl(100, 40%, 57%);
+  background-color: hsl(80, 60%, 50%);
+  color: black;
+}
+
+.upload-btn {
+  background-color: hsl(120, 72%, 48%);
   color: black;
 }
 
 .file-code-div {
   background-color: #121212 !important;
-  color: hsl(100, 100%, 80%);
+  color: hsl(120, 72%, 48%);
 }

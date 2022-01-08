@@ -83,10 +83,8 @@ header a {
 header span {
   color: hsl(60, 100%, 50%);
   color: black;
-  font-family: Calibri;
-  font-size: 1.25rem;
-  letter-spacing: 1.125px;
-  text-shadow: 0 0 1px #000, 0 0 1px #000;
+  font-family: "Montserrat";
+  /* font-size: 1.25rem; */  text-shadow: 0 0 1px #000, 0 0 1px #000;
 }
 
 .btn {
@@ -128,14 +126,13 @@ main {
 }
 
 #send {
-  background-color: hsl(46, 100%, 65%);
+  background-color: hsl(80, 80%, 60%);
   border: 2px solid black;
   box-shadow: 1px 1px 10px 1px black;
   margin-bottom: 2rem;
 }
 #get {
-  background-color: var(--theme-color);
-  background-color: hsl(33, 100%, 65%);
+  background-color: hsl(150, 90%, 50%);
   border: 2px solid black;
   box-shadow: 1px 1px 10px 1px black;
 }
